@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from routes import payment_routes
 from ai_services import social_media_ai, pricing_ai
+from routes import chat_routes
+app.include_router(chat_routes.router, prefix="/chat")
 
 app = FastAPI(title="Apex Digital AI")
 

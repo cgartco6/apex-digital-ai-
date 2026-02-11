@@ -1,5 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Chatbot from "../components/Chatbot";
+
+function Dashboard() {
+    const userId = "user_123"; // dynamic per logged-in user
+    return (
+        <div>
+            <h1>Dashboard</h1>
+            <Chatbot userId={userId} />
+        </div>
+    );
+}
 
 export default function Dashboard() {
     const [tierData, setTierData] = useState({});

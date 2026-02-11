@@ -1,0 +1,12 @@
+{
+  "project_id": "project_001",
+  "total_clients": 1,
+  "total_revenue": 1500.0,
+  "average_per_client": 1500.0,
+  "campaign_results": [
+    {"campaign_name": "Logo Launch Campaign", "engagement": 420, "conversions": 35},
+    {"campaign_name": "Website Reveal Campaign", "engagement": 380, "conversions": 30},
+    {"campaign_name": "Social Media Banner Campaign", "engagement": 500, "conversions": 50}
+  ],
+  "predicted_clients_next_10_days": 120
+}

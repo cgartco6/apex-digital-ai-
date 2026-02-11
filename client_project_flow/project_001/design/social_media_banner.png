@@ -1,0 +1,6 @@
+from PIL import Image, ImageDraw
+
+img = Image.new('RGB', (1200,628), color=(255,105,180))
+d = ImageDraw.Draw(img)
+d.text((400,280), "Promote Your Brand!", fill=(255,255,255))
+img.save("client_project_flow/project_001/design/social_media_banner.png")

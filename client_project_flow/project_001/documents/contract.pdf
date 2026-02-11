@@ -1,0 +1,18 @@
+from fpdf import FPDF
+import os
+
+os.makedirs("client_project_flow/project_001/documents", exist_ok=True)
+
+docs = {
+    "contract.pdf": "This is the contract for Client X with Apex Digital AI...",
+    "t&c.pdf": "Terms & Conditions: All projects are delivered with 100% accuracy...",
+    "popia.pdf": "POPIA Compliance: Data of the client will be handled securely...",
+    "privacy_policy.pdf": "Privacy Policy: We respect your data and confidentiality..."
+}
+
+for filename, content in docs.items():
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    pdf.multi_cell(0, 10, content)
+    pdf.output(f"client_project_flow/project_001/documents/{filename}")

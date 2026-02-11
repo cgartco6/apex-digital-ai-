@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apex Digital AI – Autonomous Design & Marketing Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary:#0f172a;
+  --accent:#2563eb;
+  --success:#16a34a;
+  --light:#f8fafc;
+  --card:#ffffff;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; font-family:'Inter',sans-serif; }
+
+body {
+  background:var(--light);
+  color:#111;
+}
+
+header {
+  background:var(--primary);
+  color:white;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+header h1 {
+  font-size:22px;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:500;
+}
+
+.hero {
+  padding:60px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#1e293b,#0f172a);
+  color:white;
+}
+
+.hero h2 {
+  font-size:38px;
+  margin-bottom:20px;
+}
+
+.hero p {
+  max-width:700px;
+  margin:auto;
+  opacity:0.9;
+}
+
+.section {
+  padding:60px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.grid {
+  display:grid;
+  gap:20px;
+}
+
+.pricing {
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.card {
+  background:var(--card);
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+.card h3 {
+  margin-bottom:10px;
+}
+
+.price {
+  font-size:26px;
+  font-weight:700;
+  margin:10px 0;
+}
+
+button {
+  background:var(--accent);
+  border:none;
+  color:white;
+  padding:10px 18px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+button:hover {
+  opacity:0.9;
+}
+
+.dashboard {
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.stat {
+  font-size:28px;
+  font-weight:700;
+}
+
+.chart {
+  margin-top:20px;
+  height:200px;
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+
+canvas {
+  width:100% !important;
+  height:150px !important;
+}
+
+.chatbot {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:320px;
+  background:white;
+  border-radius:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.2);
+  display:flex;
+  flex-direction:column;
+}
+
+.chat-header {
+  background:var(--primary);
+  color:white;
+  padding:10px;
+  border-top-left-radius:12px;
+  border-top-right-radius:12px;
+}
+
+.chat-messages {
+  height:200px;
+  overflow:auto;
+  padding:10px;
+}
+
+.chat-input {
+  display:flex;
+  border-top:1px solid #eee;
+}
+
+.chat-input input {
+  flex:1;
+  padding:8px;
+  border:none;
+}
+
+.chat-input button {
+  border-radius:0;
+}
+
+footer {
+  text-align:center;
+  padding:20px;
+  background:#e2e8f0;
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+  .hero h2 { font-size:28px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Apex Digital AI</h1>
+  <nav>
+    <a href="#pricing">Pricing</a>
+    <a href="#dashboard">Dashboard</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Fully Autonomous AI Design & Marketing Studio</h2>
+  <p>Target: 5000 paying clients in 10 days. AI-powered design, marketing, content creation, automation, analytics and 24/7 Robyn AI support.</p>
+</section>
+
+<section class="section" id="pricing">
+  <h2 style="text-align:center;margin-bottom:30px;">Pricing Plans</h2>
+  <div class="grid pricing">
+    
+    <div class="card">
+      <h3>Free</h3>
+      <div class="price">R0</div>
+      <p>Limited credits & AI preview</p>
+      <button onclick="subscribe('Free')">Start Free</button>
+    </div>
+
+    <div class="card">
+      <h3>Basic</h3>
+      <div class="price">R499/mo</div>
+      <p>Design + marketing starter</p>
+      <button onclick="subscribe('Basic')">Subscribe</button>
+    </div>
+
+    <div class="card">
+      <h3>Pro</h3>
+      <div class="price">R1299/mo</div>
+      <p>Advanced AI + automation</p>
+      <button onclick="subscribe('Pro')">Subscribe</button>
+    </div>
+
+    <div class="card">
+      <h3>Premium</h3>
+      <div class="price">R2999/mo</div>
+      <p>Full studio + scaling engine</p>
+      <button onclick="subscribe('Premium')">Subscribe</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="dashboard">
+  <h2 style="text-align:center;margin-bottom:30px;">Live Revenue Dashboard</h2>
+
+  <div class="grid dashboard">
+    <div class="card">
+      <div>Paying Clients</div>
+      <div class="stat" id="clients">1325</div>
+    </div>
+
+    <div class="card">
+      <div>Monthly Revenue (ZAR)</div>
+      <div class="stat" id="revenue">1,245,000</div>
+    </div>
+
+    <div class="card">
+      <div>Credits Sold</div>
+      <div class="stat" id="credits">82,400</div>
+    </div>
+  </div>
+
+  <div class="chart">
+    <canvas id="revenueChart"></canvas>
+  </div>
+</section>
+
+<div class="chatbot">
+  <div class="chat-header">Robyn AI Support</div>
+  <div class="chat-messages" id="chatMessages">
+    <div>Hi, I'm Robyn. How can I help?</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Ask something..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<footer>
+  © 2026 Apex Digital AI – South Africa → Global Expansion
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// Subscription simulation
+function subscribe(plan){
+  alert("You selected: " + plan + " plan. (Payment integration would trigger here)");
+}
+
+// Dynamic Revenue Growth Simulation
+let clients = 1325;
+let revenue = 1245000;
+
+setInterval(()=>{
+  clients += Math.floor(Math.random()*5);
+  revenue += Math.floor(Math.random()*15000);
+  document.getElementById("clients").innerText = clients;
+  document.getElementById("revenue").innerText = revenue.toLocaleString();
+},3000);
+
+// Chart
+const ctx = document.getElementById('revenueChart').getContext('2d');
+new Chart(ctx,{
+  type:'line',
+  data:{
+    labels:['Day1','Day2','Day3','Day4','Day5','Day6','Day7'],
+    datasets:[{
+      label:'Revenue Growth',
+      data:[100000,250000,400000,800000,1200000,2000000,3500000],
+      borderColor:'#2563eb',
+      fill:false,
+      tension:0.4
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{display:false}}
+  }
+});
+
+// Chat simulation
+function sendMessage(){
+  const input = document.getElementById("chatInput");
+  const messages = document.getElementById("chatMessages");
+  if(!input.value) return;
+  messages.innerHTML += "<div style='text-align:right;'>"+input.value+"</div>";
+  setTimeout(()=>{
+    messages.innerHTML += "<div>Robyn AI: I'm analyzing your request and optimizing your solution.</div>";
+    messages.scrollTop = messages.scrollHeight;
+  },1000);
+  input.value="";
+}
+</script>
+
+</body>
+  </html>

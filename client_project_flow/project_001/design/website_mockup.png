@@ -1,0 +1,6 @@
+from PIL import Image, ImageDraw
+
+img = Image.new('RGB', (1024,768), color=(245,245,245))
+d = ImageDraw.Draw(img)
+d.text((400,350), "Website Mockup", fill=(0,0,0))
+img.save("client_project_flow/project_001/design/website_mockup.png")

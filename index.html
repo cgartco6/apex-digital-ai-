@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Digital AI - Automate Your Business</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<!-- TailwindCSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="font-inter bg-gray-50 text-gray-900">
+
+<!-- HERO SECTION -->
+<section class="bg-gradient-to-r from-blue-700 to-purple-700 text-white py-20 px-5 text-center">
+  <h1 class="text-4xl md:text-6xl font-bold mb-4">Replace 5 Staff Tasks Instantly</h1>
+  <p class="text-xl md:text-2xl mb-6">From R799/month – Automate customer support, content, admin & more.</p>
+  <div class="flex justify-center space-x-4">
+    <button id="lowTicketBtn" class="bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-500 transition">Start Low-Ticket Plan</button>
+    <button id="highTicketBtn" class="bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-gray-100 transition">Book Enterprise Demo</button>
+  </div>
+  <p class="mt-4 text-lg" id="liveStats">143 Businesses Already Onboarded This Week</p>
+  <p class="mt-2 text-lg">Founders Price Ends In: <span id="countdownTimer">10d 00h 00m 00s</span></p>
+</section>
+
+<!-- VALUE STACK -->
+<section class="py-20 px-5 max-w-6xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-12">What You Get</h2>
+  <div class="grid md:grid-cols-2 gap-12">
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h3 class="font-bold text-xl mb-4">Low-Ticket Plan</h3>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>24/7 AI Customer Support</li>
+        <li>Social Media Content Generator</li>
+        <li>Invoice & Admin Automation</li>
+        <li>Instant Business Dashboard</li>
+        <li>Affiliate Income System (30% recurring)</li>
+        <li>Priority South Africa Support</li>
+      </ul>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h3 class="font-bold text-xl mb-4">Enterprise Plan</h3>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>Complete Workflow Automation</li>
+        <li>AI-driven Pricing Engine</li>
+        <li>Conversion Optimization Dashboard</li>
+        <li>Custom Integrations for Your Business</li>
+        <li>Dedicated Robyn AI Support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE ANCHOR -->
+<section class="py-20 px-5 bg-gray-100 text-center">
+  <h2 class="text-3xl font-bold mb-4">Price Comparison</h2>
+  <p class="mb-6">Hiring staff = R26,000/month → Apex AI = <span class="text-3xl font-bold text-blue-700">R799/month</span></p>
+  <p class="mb-6">Enterprise full automation = R200,000/month → Apex AI = <span class="text-3xl font-bold text-blue-700">R9,999 one-time setup</span></p>
+  <div class="flex justify-center space-x-4">
+    <button id="lowTicketBtn2" class="bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-500 transition">Start Low-Ticket Plan</button>
+    <button id="highTicketBtn2" class="bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-gray-100 transition">Book Enterprise Demo</button>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 px-5 max-w-4xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+  <div class="space-y-6">
+    <div>
+      <h4 class="font-semibold text-xl">Can I get a refund if it doesn’t work?</h4>
+      <p>Yes! 7-Day Full Money-Back Guarantee.</p>
+    </div>
+    <div>
+      <h4 class="font-semibold text-xl">How quickly will I see results?</h4>
+      <p>Setup takes under 10 minutes. Most users start saving time and money immediately.</p>
+    </div>
+    <div>
+      <h4 class="font-semibold text-xl">Can I earn extra income?</h4>
+      <p>Yes! 30% recurring commission for every person you refer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIRAL REFERRAL -->
+<section class="py-20 px-5 text-center bg-blue-50">
+  <h2 class="text-3xl font-bold mb-6">Invite Friends & Earn</h2>
+  <p class="mb-6">Invite 3 friends → Get 1 Month Free + 30% recurring commission</p>
+  <div class="flex justify-center space-x-4">
+    <button onclick="shareWhatsApp()" class="bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition">Share on WhatsApp</button>
+    <button onclick="shareFacebook()" class="bg-blue-700 text-white font-bold px-6 py-3 rounded-lg hover:bg-blue-800 transition">Share on Facebook</button>
+  </div>
+</section>
+
+<!-- ROBYN AI CHATBOT -->
+<div id="robynChat" class="fixed bottom-5 right-5 w-80 h-96 bg-white shadow-lg rounded-xl flex flex-col">
+  <div class="bg-blue-700 text-white font-bold px-4 py-2 rounded-t-xl">Robyn AI Assistant</div>
+  <div id="chatMessages" class="flex-1 p-4 overflow-y-auto"></div>
+  <div class="flex p-2 border-t">
+    <input type="text" id="chatInput" class="flex-1 border rounded-l px-3 py-2" placeholder="Ask me anything...">
+    <button id="sendChatBtn" class="bg-blue-700 text-white px-4 rounded-r">Send</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="py-10 px-5 bg-gray-800 text-white text-center">
+  <p>© 2026 Apex Digital AI. All rights reserved.</p>
+</footer>
+
+<script>
+// Countdown Timer
+const countdownTarget = new Date();
+countdownTarget.setDate(countdownTarget.getDate() + 10); // 10 days
+const timerEl = document.getElementById('countdownTimer');
+
+setInterval(() => {
+  const now = new Date();
+  const diff = countdownTarget - now;
+  if (diff <= 0) { timerEl.innerHTML = "0d 0h 0m 0s"; return; }
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff / (1000*60*60)) % 24);
+  const m = Math.floor((diff / (1000*60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+  timerEl.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+}, 1000);
+
+// Robyn AI Chatbot (simplified)
+const chatInput = document.getElementById('chatInput');
+const chatMessages = document.getElementById('chatMessages');
+document.getElementById('sendChatBtn').addEventListener('click', () => {
+  const msg = chatInput.value.trim();
+  if (!msg) return;
+  const userMsg = document.createElement('div'); userMsg.textContent = "You: " + msg; userMsg.className="mb-2 font-semibold"; chatMessages.appendChild(userMsg);
+  chatInput.value="";
+  // Simulated AI response
+  const botMsg = document.createElement('div'); botMsg.textContent = "Robyn: " + "Thanks! Your query is being processed. Our AI can help automate this."; botMsg.className="mb-2"; chatMessages.appendChild(botMsg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+// Viral Share Buttons
+function shareWhatsApp() {
+  const text = encodeURIComponent("I just automated my business with Apex Digital AI. Check it out: https://apex-digital.co.za");
+  window.open(`https://wa.me/?text=${text}`, '_blank');
+}
+function shareFacebook() {
+  const url = encodeURIComponent("https://apex-digital.co.za");
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+}
+
+// Stripe Checkout placeholders (replace with live keys and server endpoints)
+document.getElementById('lowTicketBtn').addEventListener('click', () => {
+  alert("Stripe / PayFast / PayPal checkout triggered for R799/month.");
+});
+document.getElementById('highTicketBtn').addEventListener('click', () => {
+  alert("Enterprise demo booking triggered for R9,999 setup.");
+});
+document.getElementById('lowTicketBtn2').addEventListener('click', () => {
+  alert("Stripe / PayFast / PayPal checkout triggered for R799/month.");
+});
+document.getElementById('highTicketBtn2').addEventListener('click', () => {
+  alert("Enterprise demo booking triggered for R9,999 setup.");
+});
+</script>
+
+</body>
+</html>
